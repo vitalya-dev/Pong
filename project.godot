@@ -23,6 +23,10 @@ _global_script_class_icons={
 config/name="Pong"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/height=512
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

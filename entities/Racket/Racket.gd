@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 signal update
 
-export var move_speed = 250
+export var move_speed = 500
 var direction = Vector2()
 
 # Declare member variables here. Examples:
