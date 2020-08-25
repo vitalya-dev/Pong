@@ -10,15 +10,8 @@ var max_hitcounter = 12
 var direction = Vector2()
 
 
-func set_start_direction():
-	var random_x = 0
-	if randi() % 10 < 5: 
-		random_x = 1
-	else:
-		random_x = -1
-
-	direction = Vector2(random_x, rand_range(-1, 1))
-	direction = direction.normalized()
+func set_random_direction():
+	direction = Vector2(1 if randi() % 10 < 5 else -1, rand_range(-1, 1)).normalized()
 
 func _physics_process(delta):
 	var collision = move_and_collide(direction.normalized() * delta * ball_speed)
@@ -26,7 +19,7 @@ func _physics_process(delta):
 		direction = direction.bounce(collision.normal).normalized()
 		if collision.collider.is_in_group("rackets"):
 			hit_counter += 1
-			ball_speed += hit_counter * speed_commulator
+			ball_speed += speed_commulator
 			$RacketSound.play()
 		else:
 			$WallSound.play()
@@ -39,8 +32,7 @@ func reset():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	randomize()
-	set_start_direction()
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
